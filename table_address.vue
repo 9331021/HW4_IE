@@ -2,7 +2,7 @@
   
 <section>
 
-   <table id="tb_address">
+   <table id="tb_address" v-if="gen_check===0">
    
     <tr id="tr_address">   
        <td id="add1">
@@ -19,15 +19,47 @@
         
         
         <td id="add3">
-            <tr><td id="td_address13"><input type="text" id="address_phone_sabet" placeholder="شماره تلفن ثابت :شماره "/></td>
+            <tr class="addd"><td id="td_address13"><input type="text" id="address_phone_sabet" placeholder="شماره تلفن ثابت :شماره "/></td>
             <td id="td_address14"><input type="text" id="address_delivery" placeholder="تحویل گیرنده : نام"/></td></tr>
             
-            <tr><td colspan="2" id="td_address23"><input type="text" id="address_text" placeholder="آدرس :متن آدرس"/></td></tr>
+            <tr class="addd"><td colspan="2" id="td_address23"><input type="text" id="address_text" placeholder="آدرس :متن آدرس"/></td></tr>
     </td>
         
         
         <td id="add5">
-              <input type="radio" id='ci_address'>
+            <div  id='ci_address'></div>
+    </td>
+       
+       
+    </tr>  
+    </table>
+    
+    <table id="tb_address" v-else-if="gen_check===1">
+   
+    <tr id="tr_address">   
+       <td id="add11">
+          
+           <tr> <td><input type="button" id="but_pen"><i id="td_address1" class="fa fa-edit" ></i> </td></tr>
+           <tr><td><input type="button" id="but_close"><i id="td_address11" class="fa fa-close" ></i> </td></tr>
+    </td>
+      
+        
+        <td id="add22">
+            <tr><td id="td_address12"><input type="text" id="address_phone" placeholder="شماره تلفن همراه: شماره"/></td></tr>
+            <tr>  <td id="td_address22"><input type="text" id="address_kod" placeholder="کدپستی :مقدار کد پستی"/></td></tr>
+    </td>
+        
+        
+        <td id="add33">
+            <tr class="addd"><td id="td_address13"><input type="text" id="address_phone_sabet" placeholder="شماره تلفن ثابت :شماره "/></td>
+            <td id="td_address14"><input type="text" id="address_delivery" placeholder="تحویل گیرنده : نام"/></td></tr>
+            
+            <tr class="addd"><td colspan="2.5" id="td_address23"><input type="text" id="address_text" placeholder="آدرس :متن آدرس"/></td></tr>
+    </td>
+        
+        
+        <td id="add55">
+            <div  id='ci_address'></div>
     </td>
        
        
@@ -44,7 +76,7 @@
 
 <script>
     export default {
-         
+            props:['gen_check'],
         data () {
             return {
             }
@@ -62,7 +94,7 @@
         height: 100px;
         border: 1px solid;
         border-color: deepskyblue;
-        
+       
         
     }
      
@@ -83,6 +115,14 @@
           background-color: gainsboro;
     }
     
+    
+        #add55{
+        border: 1px solid;
+             background-color: gainsboro;
+         width: 3.5%;
+          border-color: aqua;
+    }
+    
     #ci_address{
           position: absolute;
      width: 5%;
@@ -100,12 +140,29 @@
     
     #add2{
         border: 1px solid;
+         
     }
     
     
      #add3{
         border: 1px solid;
-         width: 60%;
+         width: 57%;
+        padding-right: 1.5%;
+        direction: rtl;
+    }
+  #add22{
+        border: 1px solid;
+         border-color: aqua;
+  
+    }
+    
+    
+     #add33{
+        border: 1px solid;
+         width: 57%;
+         border-color: aqua;
+          padding-right: 1.5%;
+        direction: rtl;
     }
     
     
@@ -147,6 +204,12 @@
         border: 1px solid;
         width: 3%;;
     }
+    
+    #add11{
+        border: 1px solid;
+        width: 3%;;
+        border-color: aqua;
+    }
     #but_close{
        position: absolute;
       
@@ -187,7 +250,7 @@
     }
       
     #td_address13{
-    width: 43%;
+    width: 45%;
         direction: rtl;
         margin-left: 0%;
         margin-top: 0%;
@@ -265,7 +328,7 @@
           font-size: 16px;
            border: 1px solid;
       border-color: white;
-          padding-right: 10%;
+       
          
     }
       #address_text{
@@ -274,7 +337,7 @@
           font-size: 16px;
            border: 1px solid;
       border-color: white;
-          padding-right: 4%;
+     
          
     }
       #address_kod{
@@ -287,8 +350,7 @@
     }
     
     
-    
-    
+   
     
     
     

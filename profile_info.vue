@@ -11,8 +11,11 @@
          <info_pass1  id="curr_pass" sub="رمزعبور فعلی" pla="" ></info_pass1>
         <div id="img_profile"> <image_profile1></image_profile1></div>
        
+        
          <info_pass1  id="new_pass" sub="رمزعبور جدید" pla="" v-model="passinput1" @blur="check_password1"  ></info_pass1>
-         <info_number1  id="phone_sabet" sub="شماره تلفن ثابت" pla="2742114" ></info_number1>
+        
+        
+        <info_number1  id="phone_sabet" sub="شماره تلفن ثابت" pla="2742114" ></info_number1>
     <info_number1  id="card_16" sub="شماره کارت 16 رقمی " pla="اختیاری" ></info_number1>
         <info1  id="city" sub="شهر" pla="برای مثال کرمان" ></info1>
          <info_pass1  id="repaet_pass" sub="تکرار رمزعبور فعلی" pla="" v-model="passinput2"  @blur="check_password2" ></info_pass1>
@@ -33,9 +36,16 @@
         <div v-else-if="!seen" id="open_address"><i  id="img_down" class="fa fa-angle-down"></i>
     
      <div id="addres_part">
-         <table_address1></table_address1>
-           <table_address1></table_address1>
-           <table_address1></table_address1>
+         
+         <input type="radio" name="gee" class="ge" v-model="ge_data" @change="ge_check1">
+         <table_address1 v-if="ge_data" class="tem" :gen_check="1" ></table_address1>
+         <table_address1 v-else-if="!ge_data" class="tem" :gen_check="0" ></table_address1>
+         
+          <input type="radio" name="gee" v-model="ge_data2" class="ge" @change="ge_check2">
+         <table_address1 v-if="ge_data2" class="tem" :gen_check="1" ></table_address1>
+         <table_address1 v-else-if="!ge_data2" class="tem" :gen_check="0" ></table_address1>
+            
+          
            <input id="save_2" type="button" placeholder="ثبت ادرس جدید" value="ثبت آدرس جدید"/>
     </div>
     
@@ -50,9 +60,7 @@
        <button  id="but_order"  v-on:click="seen1=!seen1" ><b> سفارشات</b></button>
             
     </p>
-        
-        
-        
+       
         <span v-if="seen1"> <i id="img_left1" class="fa fa-angle-left"></i></span>
          
         <div v-else-if="!seen1" id="open_address1"><i  id="img_down1" class="fa fa-angle-down"></i>
@@ -100,7 +108,9 @@
                  seen: true,
                 seen1:true,
                 passinput1:'',
-                passinput2:''
+                passinput2:'',
+                ge_data:0,
+                 ge_data2:0
             }
         },
         components: {
@@ -118,6 +128,21 @@
             search_nav2
         },
             methods: {
+                ge_check1(){
+                     this.ge_data=!this.ge_data;
+                      this.ge_data2=0;
+                    document.getElementById('rad2');
+                    
+                },
+                ge_check2(){
+                     this.ge_data2=!this.ge_data2;
+                      this.ge_data=0;
+                    
+                },
+                
+                
+                
+                
         check_password1 (value) {
   this.passinput1=value;
           
@@ -171,7 +196,7 @@ border: 1px solid;
         margin-top: 1%;
       margin-left: 64%;
         width: 25%;
-          border: 1px solid;
+        
     }
     
     #phone_{
@@ -179,7 +204,7 @@ border: 1px solid;
          margin-top: 7%;
       margin-left: 64%;
         width: 25%;
-          border: 1px solid;
+         
     }
     
     
@@ -188,21 +213,21 @@ border: 1px solid;
          margin-top: 13%;
       margin-left: 64%;
         width: 25%;
-          border: 1px solid;
+        
     }
     #curr_pass{
          position: absolute;
          margin-top: 25%;
       margin-left: 64%;
         width: 25%;
-        border: 1px solid;
+      
     }
     #new_pass{
          position: absolute;
          margin-top: 25%;
       margin-left: 33%;
         width: 25%;
-          border: 1px solid;
+          
     }
     #city{
          position: absolute;
@@ -211,7 +236,7 @@ border: 1px solid;
         width: 25%;
         text-align: right;
         direction: rtl;
-          border: 1px solid;
+        
     }
     
     
@@ -221,9 +246,9 @@ border: 1px solid;
         width: 25%;
         height: 280px;
 margin-left: 33%;
-        border: 1px solid;
-        background-color:ghostwhite;
-          border: 1px solid;
+       
+        background-color:white;
+         
     }
     
     
@@ -234,7 +259,7 @@ margin-left: 33%;
         width: 25%;
         text-align: right;
         direction: rtl;
-          border: 1px solid;
+       
     }
     
   
@@ -246,7 +271,7 @@ margin-left: 33%;
         width: 25%;
         text-align: right;
         direction: rtl;
-          border: 1px solid;
+       
     }
     
     
@@ -259,7 +284,7 @@ margin-left: 33%;
         width: 25%;
         text-align: right;
         direction: rtl;
-          border: 1px solid;
+         
         
     }
     
@@ -298,7 +323,7 @@ margin-left: 33%;
     
     
      #part22{
-        border: 1px solid;
+       
         width: 100%;
         height: auto;
     }
@@ -315,7 +340,7 @@ margin-left: 33%;
     
     
     #part33{
-        border: 1px solid;
+      
         width: 100%;
         height: auto;
     }
@@ -325,13 +350,13 @@ margin-left: 33%;
     
     #order_part{
         
-        border: 1px solid;
+    
         width: 90%;
         margin-top: -1%;
         margin-left: 5%;
-        border-color: blue;
+        
         height:auto;
-        background-color: ghostwhite;
+       
     }   
     
      
@@ -448,6 +473,30 @@ color: black;
        
     }
   
+    
+    
+    table_address1{
+        margin-top: 2%;
+    }
+    
+    
+    .tem{
+        margin-top: 1%;
+    }
+    
+    .ge{
+        position: absolute;
+        margin-left: 88%;
+        margin-top: 4%;
+        z-index: 1;
+    }
+    
+ input[type='radio']:after {
+    
+     background-color: #000EA0;}
+    input[type='radio']:checked:after {
+    
+     background-color: #FF00EE;}
     
     
     
